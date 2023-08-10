@@ -11,11 +11,13 @@ def MaxCoinPath(matrix, x1, y1, x2, y2):
         for j in range(y1, y2 + 1):
             if i > x1 and j > y1:
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + matrix[i][j]
+                print("When i and j are grater than x1",dp[i][j])
             elif i > x1:
                 dp[i][j] = dp[i-1][j] + matrix[i][j]
+                print("When i>x1",dp[i][j])
             elif j > y1:
                 dp[i][j] = dp[i][j-1] + matrix[i][j]
-    
+                print("When j>y1",dp[i][j])
     return dp[x2][y2]
 matrix = [
     [2, 1, 3, 2, 5],
