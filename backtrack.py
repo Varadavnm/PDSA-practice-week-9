@@ -1,18 +1,21 @@
-def generateParanthesis(openB, closeB, n, s=[]):
-    if closeB==n:
-        result = print(''.join(s))
-        return result
-    else:
-        if openB>closeB:
-            s.append(')')
-            generateParanthesis(openB, closeB+1, n,s)
-            s.pop()
-        if openB<n:
-            s.append('(')
-            generateParanthesis(openB+1, closeB, n, s)
-            s.pop()
-    return 
-generateParanthesis(0,0,3)
+def constructWord(input_word, word_list):
+    current = []
+    def backstrack(start):
+        if start==len(input_word):
+            result.append(list(current))
+            # print(result)
+            return
+        for word in word_list:
+            if input_word.startswith(word, start):
+                current.append(word)
+                backstrack(start+len(word))
+                current.pop()
+    result = []
+    backstrack(0)
+    print(result)
+    return result
+constructWord('apple', ['ap', 'pple', 'app', 'apl', 'appl', 'le', 'ple'])
+
             
     
             
